@@ -193,6 +193,26 @@ namespace HoTroGiaoVien.WinForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap group_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("group_32px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_avatar2 {
+            get {
+                object obj = ResourceManager.GetObject("img_avatar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap key_2_32px {
             get {
                 object obj = ResourceManager.GetObject("key_2_32px", resourceCulture);
@@ -233,6 +253,16 @@ namespace HoTroGiaoVien.WinForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap male_user_32px {
+            get {
+                object obj = ResourceManager.GetObject("male_user_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap menu_50px {
             get {
                 object obj = ResourceManager.GetObject("menu_50px", resourceCulture);
@@ -266,6 +296,16 @@ namespace HoTroGiaoVien.WinForm.Properties {
         internal static System.Drawing.Bitmap python_32px {
             get {
                 object obj = ResourceManager.GetObject("python_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap python_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("python_32px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

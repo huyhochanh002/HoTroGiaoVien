@@ -63,7 +63,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseForm.cs" />
     <Compile Include="ClsMain.cs" />
     <Compile Include="DanhMuc\Frm_ChucVu_Main.cs">
       <SubType>Form</SubType>
@@ -130,6 +129,12 @@
     </Compile>
     <Compile Include="Frm_HomePage.Designer.cs">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_QuanLyTaiKhoan_Modified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_QuanLyTaiKhoan_Modified.Designer.cs">
+      <DependentUpon>Frm_QuanLyTaiKhoan_Modified.cs</DependentUpon>
     </Compile>
     <Compile Include="MyChart.cs" />
     <Compile Include="Program.cs" />
@@ -226,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_HomePage.resx">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_QuanLyTaiKhoan_Modified.resx">
+      <DependentUpon>Frm_QuanLyTaiKhoan_Modified.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -359,6 +367,16 @@
       <Project>{e5db6b7b-b558-49f9-bfa6-69659ed8a6c1}</Project>
       <Name>HoTroGiaoVien.Commons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HoTroGiaoVien.Core\HoTroGiaoVien.DAO.csproj">
+      <Project>{8df68d80-0882-4d9c-9c0b-cd921437302a}</Project>
+      <Name>HoTroGiaoVien.DAO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\male_user_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\img_avatar2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

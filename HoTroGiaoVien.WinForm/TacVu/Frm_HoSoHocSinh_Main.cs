@@ -26,20 +26,21 @@ namespace HoTroGiaoVien.WinForm.TacVu
         string err = string.Empty;
         bool statusLoad = false;
 
-
         private void Frm_HoSoHocSinh_Main_Load(object sender, EventArgs e)
         {
             bLL_HoSoSinhVien = new BLL_HoSoSinhVien(ClsMain.arrayPath,ClsMain.fileType);
             LoadComboLop();
             HienThiDanhSachSinhVienTheoLop("0");//Chinh lai theo thong tin dang nhap
         }
-
+        /// <summary>
+        /// Phương thức Load combolop
+        /// </summary>
         private void LoadComboLop()
         {
-            DataTable dataTable = new DataTable();
-            dataTable = bLL_HoSoSinhVien.LayDuLieuChoComboLop(ref err, "0");//Sẽ phải thay lại khi có xác nhận đăng nhập
+            DataTable _dataTable = new DataTable();
+            _dataTable = bLL_HoSoSinhVien.LayDuLieuChoComboLop(ref err, "0");//Sẽ phải thay lại khi có xác nhận đăng nhập
 
-            cboLop.DataSource = dataTable;
+            cboLop.DataSource = _dataTable;
             cboLop.DisplayMember = "TenLop";
             cboLop.ValueMember = "MaLop";
 
@@ -151,6 +152,26 @@ namespace HoTroGiaoVien.WinForm.TacVu
         {
             Frm_Profile_SinhVien frm = new Frm_Profile_SinhVien();
             frm.ShowDialog();
+        }
+        string maSinhVien = string.Empty;
+        private void dgvDanhsachSinhVien_Click(object sender, EventArgs e)
+        {
+            if (dgvDanhsachSinhVien.Rows.Count > 0)
+            {
+                maSinhVien = dgvDanhsachSinhVien.CurrentRow.Cells["colMaSinhVien"].Value.ToString();
+            }
+
+        }
+
+        private void dgvDanhsachSinhVien_DoubleClick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(maSinhVien))
+            {
+                Frm_Profile_SinhVien frm_Profile_SinhVien = new Frm_Profile_SinhVien();
+                frm_Profile_SinhVien.openFromHomePage = true;
+                frm_Profile_SinhVien.maSinhVien = maSinhVien;
+                frm_Profile_SinhVien.ShowDialog();
+            }
         }
     }
 }

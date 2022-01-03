@@ -43,13 +43,17 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btnPhanGiaoVien = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvKetQuaHocTap = new System.Windows.Forms.DataGridView();
             this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.cboLop = new System.Windows.Forms.ComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaHocTap)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTitle
@@ -115,7 +119,10 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btn__Sua,
             this.btn__Xoa,
             this.btn__Thoat,
-            this.btnPhanGiaoVien});
+            this.btnPhanGiaoVien,
+            this.toolStripSeparator1,
+            this.toolStripLabel1,
+            this.toolStripTextBox1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 50);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -190,20 +197,20 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.lblErr.Size = new System.Drawing.Size(16, 17);
             this.lblErr.Text = "...";
             // 
-            // dataGridView1
+            // dgvKetQuaHocTap
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvKetQuaHocTap.AllowUserToAddRows = false;
+            this.dgvKetQuaHocTap.AllowUserToDeleteRows = false;
+            this.dgvKetQuaHocTap.BackgroundColor = System.Drawing.Color.White;
+            this.dgvKetQuaHocTap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKetQuaHocTap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSTT});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 82);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 346);
-            this.dataGridView1.TabIndex = 12;
+            this.dgvKetQuaHocTap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKetQuaHocTap.Location = new System.Drawing.Point(0, 82);
+            this.dgvKetQuaHocTap.Name = "dgvKetQuaHocTap";
+            this.dgvKetQuaHocTap.ReadOnly = true;
+            this.dgvKetQuaHocTap.Size = new System.Drawing.Size(800, 346);
+            this.dgvKetQuaHocTap.TabIndex = 12;
             // 
             // colSTT
             // 
@@ -211,12 +218,39 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.colSTT.Name = "colSTT";
             this.colSTT.ReadOnly = true;
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(72, 24);
+            this.toolStripLabel1.Text = "Chọn lớp:";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 27);
+            // 
+            // cboLop
+            // 
+            this.cboLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLop.FormattingEnabled = true;
+            this.cboLop.Location = new System.Drawing.Point(530, 52);
+            this.cboLop.Name = "cboLop";
+            this.cboLop.Size = new System.Drawing.Size(159, 28);
+            this.cboLop.TabIndex = 13;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
             // Frm_QuanLyHocTap_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cboLop);
+            this.Controls.Add(this.dgvKetQuaHocTap);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pnlTitle);
@@ -230,7 +264,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaHocTap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +285,11 @@ namespace HoTroGiaoVien.WinForm.TacVu
         private System.Windows.Forms.ToolStripButton btnPhanGiaoVien;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblErr;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvKetQuaHocTap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ComboBox cboLop;
     }
 }

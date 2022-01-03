@@ -1,5 +1,6 @@
 ﻿
 using HoTroGiaoVien.BussinessLayer.TacVu;
+using HoTroGiaoVien.DAO.EF;
 using HoTroGiaoVien.WinForm.TacVu;
 using LiveCharts;
 using LiveCharts.WinForms;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
+using Color = System.Drawing.Color;
 
 namespace HoTroGiaoVien.WinForm
 {
@@ -23,7 +25,7 @@ namespace HoTroGiaoVien.WinForm
         {
             InitializeComponent();
 
-            
+
         }
         public FrmMain frm;
         public delegate void _deDongTab();
@@ -45,7 +47,7 @@ namespace HoTroGiaoVien.WinForm
 
         DataTable dtDanhSachLop;
         DataTable dtDanhSachCanBoLop;
-        DataTable dtDanhSachSinhVien; 
+        DataTable dtDanhSachSinhVien;
 
         string err = string.Empty;
         bool statusLoadCboLop = false;
@@ -54,9 +56,9 @@ namespace HoTroGiaoVien.WinForm
 
         private void LoadDataChart(List<MyChart> list)
         {
-            IList<string> year=new List<string>();
+            IList<string> year = new List<string>();
             ChartValues<int> listquantity = new ChartValues<int>();
-            ChartValues<int> liststudentBreak = new ChartValues<int>(); 
+            ChartValues<int> liststudentBreak = new ChartValues<int>();
             foreach (var item in list)
             {
                 year.Add(item.Year.ToString());
@@ -106,36 +108,51 @@ namespace HoTroGiaoVien.WinForm
 
             HienThiThongTinThongKe();
             HienThiLuoi(dgvCanBoLop, ref dtDanhSachCanBoLop, true);
-            HienThiLuoi(dgvDanhSachSinhVien,ref dtDanhSachSinhVien, false);
-            LoadcomBoLop(cboLopBanBo);
+            HienThiLuoi(dgvDanhSachSinhVien, ref dtDanhSachSinhVien, false);
             statusLoadCboLop = false;
             LoadcomBoGiaoVien(cboGiaoVien);
+            LoadcomBoLop(cboLop);
             HienThiDanhSachLop();
+            tabControl1.SelectedTabIndex = 0;
         }
-       
+
         private void HienThiDanhSachLop()
         {
+            dtDanhSachLop = new DataTable();
             dtDanhSachLop = bLL__HomePage.LayDanhSachLop(ref err);
 
             dgvDanhSachLop.DataSource = dtDanhSachLop.DefaultView;
+            lblSoLuongLop.Text = String.Format("{0:#,###}", dtDanhSachLop.Rows.Count);
         }
         private void LoadcomBoLop(ComboBox comboBox)
         {
-            DataTable dataTable = new DataTable();
-            dataTable = bLL__HomePage.LayDuLieuChoComboLop(ref err,"0");//Chinh Lai theo thong tin dang nhap
-            comboBox.DataSource = dataTable;
+            try
+            {
+                DataTable dataTable = new DataTable();
+                dataTable = bLL__HomePage.LayDuLieuChoComboLop(ref err, "0");//Chinh Lai theo thong tin dang nhap
+                comboBox.DataSource = dataTable;
 
-            comboBox.DisplayMember = "TenLop";
-            comboBox.ValueMember = "MaLop";
+                comboBox.DisplayMember = "TenLop";
+                comboBox.ValueMember = "MaLop";
 
-            comboBox.SelectedIndex = -1;
-            comboBox.Text = "---Chọn lớp---";
-            statusLoadCboLop = true;
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = "---Chọn lớp---";
+                statusLoadCboLop = true;
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+                lblErr.Text = err;
+                lblErr.ForeColor = Color.Red;
+            }
+           
         }
 
         private void LoadcomBoGiaoVien(ComboBox comboBox)
         {
-            DataTable dataTable = new DataTable();
+            try
+            {
+  DataTable dataTable = new DataTable();
             dataTable = bLL__HomePage.LayDuLieuChoComboGiaoVien(ref err);
             comboBox.DataSource = dataTable;
 
@@ -145,19 +162,29 @@ namespace HoTroGiaoVien.WinForm
             comboBox.SelectedIndex = -1;
             comboBox.Text = "---Chọn Giáo viên---";
             statusLoadCboGV = true;
+            }
+            catch (Exception ex)
+            {
+
+                err = ex.Message;
+                lblErr.Text = err;
+                lblErr.ForeColor = Color.Red;
+            }
+          
         }
-        
-        private void HienThiLuoi(DataGridView dgv,ref DataTable _dt,bool isCanBo)
+
+        private void HienThiLuoi(DataGridView dgv, ref DataTable _dt, bool isCanBo)
         {
             _dt = bLL__HomePage.LayDanhSachSinhVien(ref err, isCanBo);
             dgv.DataSource = _dt.DefaultView;
+            lblSoLuongTong.Text = string.Format("{0:#,###0}", _dt.DefaultView.Count);
         }
         private void HienThiThongTinThongKe()
         {
             dataTable = bLL__HomePage.LaySoLuongThuongKe(ref err);
             LoadDataChart(dataTable);
         }
-        public void HienThiBieuDo(IList<string> year,ChartValues<int> quantity,ChartValues<int> studentBreak)
+        public void HienThiBieuDo(IList<string> year, ChartValues<int> quantity, ChartValues<int> studentBreak)
         {
             cartesianChart1.Series = new SeriesCollection
             {
@@ -199,7 +226,7 @@ namespace HoTroGiaoVien.WinForm
             //});
 
             //modifying any series values will also animate and update the chart
-          //  cartesianChart1.Series[2].Values.Add(5d);
+            //  cartesianChart1.Series[2].Values.Add(5d);
 
 
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
@@ -211,7 +238,7 @@ namespace HoTroGiaoVien.WinForm
         }
         private void label8_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -220,20 +247,179 @@ namespace HoTroGiaoVien.WinForm
             frmProfile_SinhVien.ShowDialog();
         }
 
-        private void txtSearchingCanBo_TextChanged(object sender, EventArgs e)
+        private void txtSearchingSV_TextChanged(object sender, EventArgs e)
         {
+            DataView view = dtDanhSachSinhVien.DefaultView;
+            view.RowFilter = string.Empty;
 
+            if (!string.IsNullOrEmpty(txtSearchingSV.Text))
+            {
+                if (ckbSearchingbyTen.Checked)
+                {
+                    view.RowFilter = string.Format("TenSinhVien like '{0}%'", txtSearchingSV.Text);
+
+                }
+                else
+                {
+                    view.RowFilter = string.Format("MaSinhVien like '{0}%'", txtSearchingSV.Text);
+                }
+            }
+            else
+            {
+                view.RowFilter = string.Empty;
+            }
+            dgvDanhSachSinhVien.DataSource = view;
+            lblSoLuongTong.Text = string.Format("{0:#,###0}", view.Count);
         }
 
 
-        private void cboLopBanBo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboLop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboLopBanBo.SelectedIndex > -1 && statusLoadCboLop == true)
-            {
 
+            DataView view = dtDanhSachSinhVien.DefaultView;
+            view.RowFilter = string.Empty;
+            if (cboLop.SelectedIndex > -1 && statusLoadCboLop == true)
+            {
+                view.RowFilter = string.Format("MaLop like '{0}%'", cboLop.SelectedValue.ToString());
+                lblTitleStudentList.Text = string.Format("Danh sách sinh viên lớp {0}", cboLop.SelectedValue.ToString());
+            }
+            else
+            {
+                view.RowFilter = string.Empty;
+            }
+            dgvDanhSachSinhVien.DataSource = view;
+            lblSoLuongTong.Text = string.Format("{0:#,###0}", view.Count);
+        }
+
+        private void ckbSearchingbyTen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbSearchingbyTen.Checked)
+            {
+                ckbSearchingbyTen.Text = "Theo tên";
+            }
+            else
+            {
+                ckbSearchingbyTen.Text = "Theo MSSV";
             }
         }
 
-       
+        private void txtSearchingGiaoVien_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = dtDanhSachLop.DefaultView;
+            view.RowFilter = string.Empty;
+
+            if (!string.IsNullOrEmpty(txtSearchingGiaoVien.Text))
+            {
+                if (ckbSearchingbyTen.Checked)
+                {
+                    view.RowFilter = string.Format("TenGiaoVien like '{0}%'", txtSearchingGiaoVien.Text);
+
+                }
+                else
+                {
+                    view.RowFilter = string.Format("MaGiaoVien like '{0}%'", txtSearchingGiaoVien.Text);
+                }
+            }
+            else
+            {
+                view.RowFilter = string.Empty;
+            }
+            dgvDanhSachLop.DataSource = view;
+            lblSoLuongLop.Text = string.Format("{0:#,###0}", view.Count);
+        }
+
+        private void cboGiaoVien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dtDanhSachLop != null)
+            {
+
+
+                DataView view = dtDanhSachLop.DefaultView;
+                view.RowFilter = string.Empty;
+                if (cboGiaoVien.SelectedIndex > -1 && statusLoadCboGV == true)
+                {
+                    view.RowFilter = string.Format("MaGiaoVien like '%{0}%'", cboGiaoVien.SelectedValue.ToString());
+                }
+                else
+                {
+                    view.RowFilter = string.Empty;
+                }
+                dgvDanhSachLop.DataSource = view;
+                lblSoLuongLop.Text = string.Format("{0:#,###0}", view.Count);
+            }
+        }
+
+        private void ckbTenGiaoVien_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbTenGiaoVien.Checked)
+            {
+                ckbTenGiaoVien.Text = "Theo tên";
+            }
+            else
+            {
+                ckbTenGiaoVien.Text = "Theo MSSV";
+            }
+        }
+
+        private void tabControl1_SelectedTabChanging(object sender, DevComponents.DotNetBar.TabStripTabChangingEventArgs e)
+        {
+            if (tabControl1.SelectedTabIndex == 0)//Chon tab danh sach sinh vien
+            {
+                cboLop.Enabled = true;
+                txtSearchingSV.Enabled = true;
+            }
+            else
+            {
+                cboLop.Enabled = false;
+                txtSearchingSV.Enabled = false;
+            }
+        }
+        /// <summary>
+        /// Hiển thị profile của sinh viên được chọn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvDanhSachSinhVien_DoubleClick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(maSinhVien))
+            {
+                Frm_Profile_SinhVien frm_Profile_SinhVien = new Frm_Profile_SinhVien();
+                frm_Profile_SinhVien.openFromHomePage = true;
+                frm_Profile_SinhVien.maSinhVien = maSinhVien;
+                frm_Profile_SinhVien.ShowDialog();
+            }
+        }
+        SinhVien sinhVien;
+        string maSinhVien=string.Empty;
+        private void dgvDanhSachSinhVien_Click(object sender, EventArgs e)
+        {
+            if(dgvDanhSachSinhVien.Rows.Count>0)
+            {
+                //sinhVien = new SinhVien()
+                //{
+                //    MaSinhVien = dgvDanhSachSinhVien.CurrentRow.Cells["colMaSinhVien"].Value.ToString()
+                //};
+                maSinhVien = dgvDanhSachSinhVien.CurrentRow.Cells["colMaSinhVien"].Value.ToString();
+            }
+        }
+
+        private void dgvCanBoLop_DoubleClick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(maSinhVien))
+            {
+                Frm_Profile_SinhVien frm_Profile_SinhVien = new Frm_Profile_SinhVien();
+                frm_Profile_SinhVien.openFromHomePage = true;
+                frm_Profile_SinhVien.maSinhVien = maSinhVien;
+                frm_Profile_SinhVien.ShowDialog();
+            }
+        }
+
+        private void dgvCanBoLop_Click(object sender, EventArgs e)
+        {
+            if (dgvCanBoLop.Rows.Count > 0)
+            {
+                maSinhVien = dgvCanBoLop.CurrentRow.Cells["colMSSVCanBo"].Value.ToString();
+            }
+        }
     }
 }

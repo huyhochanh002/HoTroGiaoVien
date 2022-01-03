@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace HoTroGiaoVien.WinForm
 {
-   public class ClsMain
+    public class ClsMain
     {
         #region skin
-        public static Color backgroud_color= Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(56)))), ((int)(((byte)(221)))));//21, 101, 192
-        public static Color backgroud_color2= System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(181)))), ((int)(((byte)(66)))));
+        public static Color backgroud_color = Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(56)))), ((int)(((byte)(221)))));//21, 101, 192
+        public static Color backgroud_color2 = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(181)))), ((int)(((byte)(66)))));
         #endregion
         //Mảng chửa đường dẫn file kết nối
         public static string[] arrayPath = new string[] {
@@ -64,6 +64,9 @@ namespace HoTroGiaoVien.WinForm
         public static string tenNhanVien = string.Empty;
         public static string maTaiKhoan = string.Empty;
         public static string maNhanVien = string.Empty;
+        public static string TenDangNhap = string.Empty;
+
+        public static string hinhDaiDienNull = string.Format(@"{0}\img_avatar2.png", Application.StartupPath);
 
 
     }

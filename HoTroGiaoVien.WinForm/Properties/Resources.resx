@@ -127,8 +127,8 @@
   <data name="system_32px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\system_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="python_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\python_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="male_user_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\male_user_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete_bin_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\delete_bin_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -141,6 +141,12 @@
   </data>
   <data name="menu_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\menu_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="access_denied_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\access_denied_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChangedPassword_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ChangedPassword_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="menu_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\menu_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,6 +175,9 @@
   <data name="restart_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\restart_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="group_32px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\group_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shutdown_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\shutdown_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,11 +196,11 @@
   <data name="exit_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\exit_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="img_avatar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\img_avatar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="group_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\group_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\exit_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="facebook_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\facebook_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,16 +208,19 @@
   <data name="add_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\add_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ChangedPassword_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\ChangedPassword_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="python_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\python_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="access_denied_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\access_denied_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\exit_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="system_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\system_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sent_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\sent_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="python_32px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\python_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

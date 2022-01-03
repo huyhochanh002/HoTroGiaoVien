@@ -47,6 +47,7 @@ namespace HoTroGiaoVien.WinForm
             pnlHeThong.Height = 307;
             pnlDanhMuc.Height = 53;
             pnlTacVu.Height = 53;
+            pnl__BaoCao.Height = 53;
             pnlRightSideBar.Width = 220;
 
             lblTimer.Text = string.Format("{0:dd-MM-yyyy HH:mm:ss}", DateTime.Now);
@@ -65,6 +66,7 @@ namespace HoTroGiaoVien.WinForm
                 pnlRightSideBar.Width = 220;
                 pnlDanhMuc.Height =53 ;
                 pnlTacVu.Height = 53;
+                pnl__BaoCao.Height = 53;
             }
         }
 
@@ -81,6 +83,7 @@ namespace HoTroGiaoVien.WinForm
                 pnlRightSideBar.Width = 220;
                 pnlHeThong.Height = 53;
                 pnlTacVu.Height = 53;
+                pnl__BaoCao.Height = 53;
             }
         }
 
@@ -93,10 +96,28 @@ namespace HoTroGiaoVien.WinForm
             }
             else
             {
+                pnl__BaoCao.Height = 53;
                 pnlDanhMuc.Height = 53;
                 pnlRightSideBar.Width = 220;
                 pnlHeThong.Height = 53;
                 pnlTacVu.Height = 307;
+            }
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            if (pnl__BaoCao.Height == 307)
+            {
+                pnl__BaoCao.Height = 53;
+
+            }
+            else
+            {
+                pnl__BaoCao.Height = 307;
+                pnlDanhMuc.Height = 53;
+                pnlRightSideBar.Width = 220;
+                pnlHeThong.Height = 53;
+                pnlTacVu.Height = 53;
             }
         }
 
@@ -301,5 +322,7 @@ namespace HoTroGiaoVien.WinForm
         {
             OpenForm(new Frm_QuanLyNoiNgoaiTru_Main(), "Quản lý Nội - Ngoại trú", true);
         }
+
+        
     }
 }

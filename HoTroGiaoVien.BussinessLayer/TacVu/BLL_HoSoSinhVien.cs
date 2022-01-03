@@ -38,8 +38,25 @@ namespace HoTroGiaoVien.BussinessLayer.TacVu
             };
             return data.MyGetDataTable(ref err, "PSP_SinhVien_LayDanhSachTheo__GiaoVienChuNhiem", CommandType.StoredProcedure, param);
         }
+        #endregion
 
+        #region Các phương thức cho form Profile sinh viên
+        //Lấy thông tin cá nhân
+        public DataTable LayThongTinCaNhanSinhVien(ref string err, string maSinhVien)
+        {
+            SqlParameter[] param = new SqlParameter[]{
+                new SqlParameter("@MaSinhVien",maSinhVien)
+            };
+            return data.MyGetDataTable(ref err, "PSP_SinhVien_LayThongTinCaNhanByID", CommandType.StoredProcedure, param);
+        }
 
+        public DataTable LayThongTinGiaDinhTheoMaSinhVien(ref string err, string maSinhVien)
+        {
+            SqlParameter[] param = new SqlParameter[]{
+                new SqlParameter("@MaSinhVien",maSinhVien)
+            };
+            return data.MyGetDataTable(ref err, "PSP_SinhVien_LayThongTinGiaDinh", CommandType.StoredProcedure, param);
+        }
         #endregion
     }
 }

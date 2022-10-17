@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HoTroGiaoVien.BussinessLayer.TacVu
 {
-   public class BLL__HomePage:BLL_Base
+    public class BLL__HomePage : BLL_Base
     {
         public BLL__HomePage(string[] path, FileConnectType fileType)
             : base(path, fileType)
@@ -23,20 +23,25 @@ namespace HoTroGiaoVien.BussinessLayer.TacVu
         /// </summary>
         /// <param name="err">Biến tham chiếu cho phương thức lưu lỗi</
         /// <returns>Danh sách thong kê theo năm</returns>
-        public DataTable LaySoLuongThuongKe(ref string err)
+        public DataTable LaySoLuongThuongKe(ref string err, string maGiaoVien)
         {
-            return data.MyGetDataTable(ref err, "PSP_ThongKe_LaySoLuongTheoTungNam", CommandType.StoredProcedure, null);
+            SqlParameter[] param = new SqlParameter[]
+           {
+                new SqlParameter("@MaGiaoVien",maGiaoVien)
+           };
+            return data.MyGetDataTable(ref err, "PSP_ThongKe_LaySoLuongTheoTungNam", CommandType.StoredProcedure, param);
         }
 
-        public DataTable LayDanhSachSinhVien(ref string err,bool isCanBo)
+        public DataTable LayDanhSachSinhVien(ref string err, bool isCanBo, string maGiaoVien)
         {
             SqlParameter[] param = new SqlParameter[]
             {
-                new SqlParameter("@IsCanBo",isCanBo)
+                new SqlParameter("@IsCanBo",isCanBo),
+                new SqlParameter("@MaGiaoVien",maGiaoVien)
             };
             return data.MyGetDataTable(ref err, "PSP_ThongKe_DanhSachCanBoLop", CommandType.StoredProcedure, param);
         }
-        public DataTable LayDuLieuChoComboLop(ref string err,string maGiaoVien)
+        public DataTable LayDuLieuChoComboLop(ref string err, string maGiaoVien)
         {
             SqlParameter[] param = new SqlParameter[]
            {
@@ -48,12 +53,12 @@ namespace HoTroGiaoVien.BussinessLayer.TacVu
         {
             return data.MyGetDataTable(ref err, "PSP_GiaoVien_HienThiDanhSachGiaoVienCbo", CommandType.StoredProcedure, null);
         }
-      
+
         public DataTable LayDanhSachLop(ref string err)
         {
             return data.MyGetDataTable(ref err, "PSP_Lop_LayDanhSachLop", CommandType.StoredProcedure, null);
         }
-        
+
 
         #endregion
 

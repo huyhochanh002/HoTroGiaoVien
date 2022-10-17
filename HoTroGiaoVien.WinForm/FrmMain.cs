@@ -35,6 +35,7 @@ namespace HoTroGiaoVien.WinForm
             frmLogin.ShowDialog();
             LoadLayout();
             OpenForm(new Frm_HomePage(), "Home page", true);
+            lblUserName.Text = string.Format("{0} {1} - [{2}]", ClsMain.giaoVien.HoGiaoVien, ClsMain.giaoVien.TenGiaoVien, ClsMain.giaoVien.MaGiaoVien);
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace HoTroGiaoVien.WinForm
             lblTimer.Text = string.Format("{0:dd-MM-yyyy HH:mm:ss}", DateTime.Now);
             timer1.Enabled = true;
         }
-        
+
         private void btn__Menu__HeThong_Click(object sender, EventArgs e)
         {
             if (pnlHeThong.Height == 307)
@@ -62,9 +63,9 @@ namespace HoTroGiaoVien.WinForm
             }
             else
             {
-                pnlHeThong.Height =307 ;
+                pnlHeThong.Height = 307;
                 pnlRightSideBar.Width = 220;
-                pnlDanhMuc.Height =53 ;
+                pnlDanhMuc.Height = 53;
                 pnlTacVu.Height = 53;
                 pnl__BaoCao.Height = 53;
             }
@@ -92,7 +93,6 @@ namespace HoTroGiaoVien.WinForm
             if (pnlTacVu.Height == 307)
             {
                 pnlTacVu.Height = 53;
-               
             }
             else
             {
@@ -128,9 +128,9 @@ namespace HoTroGiaoVien.WinForm
 
         private void picMenu_Click(object sender, EventArgs e)
         {
-            if(pnlRightSideBar.Width==220)
+            if (pnlRightSideBar.Width == 220)
             {
-                pnlRightSideBar.Width =53;
+                pnlRightSideBar.Width = 53;
                 pnlHeThong.Height = 53;
                 pnlDanhMuc.Height = 53;
                 pnlTacVu.Height = 53;
@@ -184,10 +184,10 @@ namespace HoTroGiaoVien.WinForm
             }
         }
 
-        private void OpenForm(Form frm,string tieuDe,bool trangThaiMoTab)
+        private void OpenForm(Form frm, string tieuDe, bool trangThaiMoTab)
         {
             this.trangThaiMoTab = trangThaiMoTab;
-           this.tieuDeTab = tieuDe;
+            this.tieuDeTab = tieuDe;
             if (!checkOpenTabs(tieuDeTab))
             {
                 TabItem t = tc_Main.CreateTab(tieuDeTab);
@@ -259,13 +259,20 @@ namespace HoTroGiaoVien.WinForm
 
         private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
         {
-
-            OpenForm(new FrmQuanLyTaiKhoan_Main(), "Quản lý tài khoản", true);
+            if (ClsMain.giaoVien.MaNhom.Equals("1"))
+            {
+                OpenForm(new FrmQuanLyTaiKhoan_Main(), "Quản lý tài khoản", true);
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Tài khoản {0} {1} không có quyền trên chức năng này", ClsMain.giaoVien.HoGiaoVien, ClsMain.giaoVien.TenGiaoVien), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
-            OpenForm(new FrmThayDoiMatKhau_Main(), "Thay đổi mật khẩu", true);
+            FrmThayDoiMatKhau_Main frmThayDoiMatKhau_Main = new FrmThayDoiMatKhau_Main();
+            frmThayDoiMatKhau_Main.ShowDialog();
         }
 
         private void btn__DanhMucKhoa_Click(object sender, EventArgs e)
@@ -323,6 +330,41 @@ namespace HoTroGiaoVien.WinForm
             OpenForm(new Frm_QuanLyNoiNgoaiTru_Main(), "Quản lý Nội - Ngoại trú", true);
         }
 
-        
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            ClsMain.giaoVien = null;
+            lblUserName.Text = "";
+            frmLogin.ShowDialog();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSaoLuu_Click(object sender, EventArgs e)
+        {
+            if (ClsMain.giaoVien.MaNhom.Equals("1"))
+            {
+                OpenForm(new Frm_BackUp__Restore(), "Sao lưu và phục hồi dữ liệu", true);
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Tài khoản {0} {1} không có quyền trên chức năng này", ClsMain.giaoVien.HoGiaoVien, ClsMain.giaoVien.TenGiaoVien), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            if (ClsMain.giaoVien.MaNhom.Equals("1"))
+            {
+                OpenForm(new Frm_PhanQuyen_Main(), "Quản lý phân quyền", true);
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Tài khoản {0} {1} không có quyền trên chức năng này", ClsMain.giaoVien.HoGiaoVien, ClsMain.giaoVien.TenGiaoVien), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

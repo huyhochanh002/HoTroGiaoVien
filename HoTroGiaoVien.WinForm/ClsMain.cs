@@ -1,4 +1,5 @@
 ﻿using HoTroGiaoVien.Commons;
+using HoTroGiaoVien.DAO.EF;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace HoTroGiaoVien.WinForm
         public static string maNhanVien = string.Empty;
         public static string TenDangNhap = string.Empty;
 
+        public static GiaoVien giaoVien = new GiaoVien();
         public static string hinhDaiDienNull = string.Format(@"{0}\img_avatar2.png", Application.StartupPath);
 
 

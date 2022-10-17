@@ -106,14 +106,32 @@ namespace HoTroGiaoVien.WinForm
         {
             bLL__HomePage = new BLL__HomePage(ClsMain.arrayPath, ClsMain.fileType);
 
-            HienThiThongTinThongKe();
-            HienThiLuoi(dgvCanBoLop, ref dtDanhSachCanBoLop, true);
-            HienThiLuoi(dgvDanhSachSinhVien, ref dtDanhSachSinhVien, false);
             statusLoadCboLop = false;
             LoadcomBoGiaoVien(cboGiaoVien);
-            LoadcomBoLop(cboLop);
+            //Hiển thị danh sách lớp trên Lưới
             HienThiDanhSachLop();
+
             tabControl1.SelectedTabIndex = 0;
+
+            if (!ClsMain.giaoVien.MaNhom.Equals("1"))
+            {
+                HienThiThongTinThongKe(ClsMain.giaoVien.MaGiaoVien);
+                cboGiaoVien.Enabled = false;
+                cboGiaoVien.SelectedValue = ClsMain.giaoVien.MaGiaoVien;
+
+                HienThiLuoi(dgvCanBoLop, ref dtDanhSachCanBoLop, true, ClsMain.giaoVien.MaGiaoVien);
+                HienThiLuoi(dgvDanhSachSinhVien, ref dtDanhSachSinhVien, false, ClsMain.giaoVien.MaGiaoVien);
+                LoadcomBoLop(cboLop, ClsMain.giaoVien.MaGiaoVien);
+            }
+            else
+            {
+                HienThiThongTinThongKe("0");
+                HienThiLuoi(dgvCanBoLop, ref dtDanhSachCanBoLop, true, "0");
+                HienThiLuoi(dgvDanhSachSinhVien, ref dtDanhSachSinhVien, false, "0");
+                LoadcomBoLop(cboLop, "0");
+            }
+
+
         }
 
         private void HienThiDanhSachLop()
@@ -124,12 +142,13 @@ namespace HoTroGiaoVien.WinForm
             dgvDanhSachLop.DataSource = dtDanhSachLop.DefaultView;
             lblSoLuongLop.Text = String.Format("{0:#,###}", dtDanhSachLop.Rows.Count);
         }
-        private void LoadcomBoLop(ComboBox comboBox)
+        private void LoadcomBoLop(ComboBox comboBox, string maGiaoVien)
         {
             try
             {
                 DataTable dataTable = new DataTable();
-                dataTable = bLL__HomePage.LayDuLieuChoComboLop(ref err, "0");//Chinh Lai theo thong tin dang nhap
+                dataTable = bLL__HomePage.LayDuLieuChoComboLop(ref err, maGiaoVien);
+                //Chinh Lai theo thong tin dang nhap
                 comboBox.DataSource = dataTable;
 
                 comboBox.DisplayMember = "TenLop";
@@ -145,23 +164,23 @@ namespace HoTroGiaoVien.WinForm
                 lblErr.Text = err;
                 lblErr.ForeColor = Color.Red;
             }
-           
+
         }
 
         private void LoadcomBoGiaoVien(ComboBox comboBox)
         {
             try
             {
-  DataTable dataTable = new DataTable();
-            dataTable = bLL__HomePage.LayDuLieuChoComboGiaoVien(ref err);
-            comboBox.DataSource = dataTable;
+                DataTable dataTable = new DataTable();
+                dataTable = bLL__HomePage.LayDuLieuChoComboGiaoVien(ref err);
+                comboBox.DataSource = dataTable;
 
-            comboBox.DisplayMember = "HoTenGiaoVien";
-            comboBox.ValueMember = "MaGiaoVien";
+                comboBox.DisplayMember = "HoTenGiaoVien";
+                comboBox.ValueMember = "MaGiaoVien";
 
-            comboBox.SelectedIndex = -1;
-            comboBox.Text = "---Chọn Giáo viên---";
-            statusLoadCboGV = true;
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = "---Chọn Giáo viên---";
+                statusLoadCboGV = true;
             }
             catch (Exception ex)
             {
@@ -170,18 +189,23 @@ namespace HoTroGiaoVien.WinForm
                 lblErr.Text = err;
                 lblErr.ForeColor = Color.Red;
             }
-          
-        }
 
-        private void HienThiLuoi(DataGridView dgv, ref DataTable _dt, bool isCanBo)
+        }
+        /// <summary>
+        /// Hiển thị danh sách sinh viên trên lưới
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="_dt"></param>
+        /// <param name="isCanBo"></param>
+        private void HienThiLuoi(DataGridView dgv, ref DataTable _dt, bool isCanBo, string maGiaovien)
         {
-            _dt = bLL__HomePage.LayDanhSachSinhVien(ref err, isCanBo);
+            _dt = bLL__HomePage.LayDanhSachSinhVien(ref err, isCanBo, maGiaovien);
             dgv.DataSource = _dt.DefaultView;
             lblSoLuongTong.Text = string.Format("{0:#,###0}", _dt.DefaultView.Count);
         }
-        private void HienThiThongTinThongKe()
+        private void HienThiThongTinThongKe(string maGiaoVien)
         {
-            dataTable = bLL__HomePage.LaySoLuongThuongKe(ref err);
+            dataTable = bLL__HomePage.LaySoLuongThuongKe(ref err, maGiaoVien);
             LoadDataChart(dataTable);
         }
         public void HienThiBieuDo(IList<string> year, ChartValues<int> quantity, ChartValues<int> studentBreak)
@@ -280,8 +304,16 @@ namespace HoTroGiaoVien.WinForm
             view.RowFilter = string.Empty;
             if (cboLop.SelectedIndex > -1 && statusLoadCboLop == true)
             {
-                view.RowFilter = string.Format("MaLop like '{0}%'", cboLop.SelectedValue.ToString());
-                lblTitleStudentList.Text = string.Format("Danh sách sinh viên lớp {0}", cboLop.SelectedValue.ToString());
+                if (cboLop.SelectedValue.ToString().Equals("0"))
+                {
+                    view.RowFilter = string.Empty;
+                }
+                else
+                {
+                    view.RowFilter = string.Format("MaLop like '{0}%'", cboLop.SelectedValue.ToString());
+                    lblTitleStudentList.Text = string.Format("Danh sách sinh viên lớp {0}", cboLop.SelectedValue.ToString());
+                }
+
             }
             else
             {
@@ -332,13 +364,16 @@ namespace HoTroGiaoVien.WinForm
         {
             if (dtDanhSachLop != null)
             {
-
-
                 DataView view = dtDanhSachLop.DefaultView;
                 view.RowFilter = string.Empty;
                 if (cboGiaoVien.SelectedIndex > -1 && statusLoadCboGV == true)
                 {
-                    view.RowFilter = string.Format("MaGiaoVien like '%{0}%'", cboGiaoVien.SelectedValue.ToString());
+                    if (cboGiaoVien.SelectedValue.ToString().Equals("0"))
+                    {
+                        view.RowFilter = string.Empty;
+                    }
+                    else { view.RowFilter = string.Format("MaGiaoVien like '%{0}%'", cboGiaoVien.SelectedValue.ToString()); }
+
                 }
                 else
                 {
@@ -390,10 +425,10 @@ namespace HoTroGiaoVien.WinForm
             }
         }
         SinhVien sinhVien;
-        string maSinhVien=string.Empty;
+        string maSinhVien = string.Empty;
         private void dgvDanhSachSinhVien_Click(object sender, EventArgs e)
         {
-            if(dgvDanhSachSinhVien.Rows.Count>0)
+            if (dgvDanhSachSinhVien.Rows.Count > 0)
             {
                 //sinhVien = new SinhVien()
                 //{

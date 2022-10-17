@@ -76,11 +76,23 @@
     <Compile Include="DanhMuc\Frm_DanhMucKhoa_Main.Designer.cs">
       <DependentUpon>Frm_DanhMucKhoa_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhMuc\Frm_DanhMucKhoa_Modified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_DanhMucKhoa_Modified.Designer.cs">
+      <DependentUpon>Frm_DanhMucKhoa_Modified.cs</DependentUpon>
+    </Compile>
     <Compile Include="DanhMuc\Frm_DanhMucLop_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DanhMuc\Frm_DanhMucLop_Main.Designer.cs">
       <DependentUpon>Frm_DanhMucLop_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_DanhMucLop_Modified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_DanhMucLop_Modified.Designer.cs">
+      <DependentUpon>Frm_DanhMucLop_Modified.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_LoaiXuLyHocVu_Main.cs">
       <SubType>Form</SubType>
@@ -124,11 +136,23 @@
     <Compile Include="FrmThayDoiMatKhau_Main.Designer.cs">
       <DependentUpon>FrmThayDoiMatKhau_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_BackUp__Restore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BackUp__Restore.Designer.cs">
+      <DependentUpon>Frm_BackUp__Restore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_HomePage.Designer.cs">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_PhanQuyen_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_PhanQuyen_Main.Designer.cs">
+      <DependentUpon>Frm_PhanQuyen_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_QuanLyTaiKhoan_Modified.cs">
       <SubType>Form</SubType>
@@ -169,6 +193,12 @@
     <Compile Include="TacVu\Frm_HoSoHocSinh_Modified.Designer.cs">
       <DependentUpon>Frm_HoSoHocSinh_Modified.cs</DependentUpon>
     </Compile>
+    <Compile Include="TacVu\Frm_PhanGiaoVienChuNhiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TacVu\Frm_PhanGiaoVienChuNhiem.Designer.cs">
+      <DependentUpon>Frm_PhanGiaoVienChuNhiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="TacVu\Frm_Profile_SinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +210,12 @@
     </Compile>
     <Compile Include="TacVu\Frm_QuanLyGiaoVienChuNhiem_Main.Designer.cs">
       <DependentUpon>Frm_QuanLyGiaoVienChuNhiem_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TacVu\Frm_QuanLyGiaoVienChuNhiem_Modified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TacVu\Frm_QuanLyGiaoVienChuNhiem_Modified.Designer.cs">
+      <DependentUpon>Frm_QuanLyGiaoVienChuNhiem_Modified.cs</DependentUpon>
     </Compile>
     <Compile Include="TacVu\Frm_QuanLyHocTap_Main.cs">
       <SubType>Form</SubType>
@@ -205,8 +241,14 @@
     <EmbeddedResource Include="DanhMuc\Frm_DanhMucKhoa_Main.resx">
       <DependentUpon>Frm_DanhMucKhoa_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DanhMuc\Frm_DanhMucKhoa_Modified.resx">
+      <DependentUpon>Frm_DanhMucKhoa_Modified.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DanhMuc\Frm_DanhMucLop_Main.resx">
       <DependentUpon>Frm_DanhMucLop_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhMuc\Frm_DanhMucLop_Modified.resx">
+      <DependentUpon>Frm_DanhMucLop_Modified.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanhMuc\Frm_LoaiXuLyHocVu_Main.resx">
       <DependentUpon>Frm_LoaiXuLyHocVu_Main.cs</DependentUpon>
@@ -229,8 +271,14 @@
     <EmbeddedResource Include="FrmThayDoiMatKhau_Main.resx">
       <DependentUpon>FrmThayDoiMatKhau_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BackUp__Restore.resx">
+      <DependentUpon>Frm_BackUp__Restore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_HomePage.resx">
       <DependentUpon>Frm_HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_PhanQuyen_Main.resx">
+      <DependentUpon>Frm_PhanQuyen_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_QuanLyTaiKhoan_Modified.resx">
       <DependentUpon>Frm_QuanLyTaiKhoan_Modified.cs</DependentUpon>
@@ -257,11 +305,17 @@
     <EmbeddedResource Include="TacVu\Frm_HoSoHocSinh_Modified.resx">
       <DependentUpon>Frm_HoSoHocSinh_Modified.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TacVu\Frm_PhanGiaoVienChuNhiem.resx">
+      <DependentUpon>Frm_PhanGiaoVienChuNhiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TacVu\Frm_Profile_SinhVien.resx">
       <DependentUpon>Frm_Profile_SinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TacVu\Frm_QuanLyGiaoVienChuNhiem_Main.resx">
       <DependentUpon>Frm_QuanLyGiaoVienChuNhiem_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TacVu\Frm_QuanLyGiaoVienChuNhiem_Modified.resx">
+      <DependentUpon>Frm_QuanLyGiaoVienChuNhiem_Modified.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TacVu\Frm_QuanLyHocTap_Main.resx">
       <DependentUpon>Frm_QuanLyHocTap_Main.cs</DependentUpon>

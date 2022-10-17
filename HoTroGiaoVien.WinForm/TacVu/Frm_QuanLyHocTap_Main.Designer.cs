@@ -41,14 +41,14 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btn__Xoa = new System.Windows.Forms.ToolStripButton();
             this.btn__Thoat = new System.Windows.Forms.ToolStripButton();
             this.btnPhanGiaoVien = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvKetQuaHocTap = new System.Windows.Forms.DataGridView();
             this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.cboLop = new System.Windows.Forms.ComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -65,7 +65,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(800, 50);
+            this.pnlTitle.Size = new System.Drawing.Size(1287, 50);
             this.pnlTitle.TabIndex = 6;
             // 
             // lblTitle
@@ -77,7 +77,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(50, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(700, 50);
+            this.lblTitle.Size = new System.Drawing.Size(1187, 50);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Quản lý học tập";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -101,7 +101,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btnThoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThoat.Image = global::HoTroGiaoVien.WinForm.Properties.Resources.close_window_32px;
-            this.btnThoat.Location = new System.Drawing.Point(750, 0);
+            this.btnThoat.Location = new System.Drawing.Point(1237, 0);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(50, 50);
             this.btnThoat.TabIndex = 0;
@@ -127,7 +127,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 5, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(800, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(1287, 32);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -179,14 +179,31 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btnPhanGiaoVien.Size = new System.Drawing.Size(126, 24);
             this.btnPhanGiaoVien.Text = "Phân giáo viên";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(72, 24);
+            this.toolStripLabel1.Text = "Chọn lớp:";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 27);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(72)))), ((int)(((byte)(131)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblErr});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 504);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1287, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -209,7 +226,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.dgvKetQuaHocTap.Location = new System.Drawing.Point(0, 82);
             this.dgvKetQuaHocTap.Name = "dgvKetQuaHocTap";
             this.dgvKetQuaHocTap.ReadOnly = true;
-            this.dgvKetQuaHocTap.Size = new System.Drawing.Size(800, 346);
+            this.dgvKetQuaHocTap.Size = new System.Drawing.Size(1287, 422);
             this.dgvKetQuaHocTap.TabIndex = 12;
             // 
             // colSTT
@@ -217,18 +234,6 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.colSTT.HeaderText = "STT";
             this.colSTT.Name = "colSTT";
             this.colSTT.ReadOnly = true;
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(72, 24);
-            this.toolStripLabel1.Text = "Chọn lớp:";
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 27);
             // 
             // cboLop
             // 
@@ -239,16 +244,11 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.cboLop.Size = new System.Drawing.Size(159, 28);
             this.cboLop.TabIndex = 13;
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
             // Frm_QuanLyHocTap_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1287, 526);
             this.Controls.Add(this.cboLop);
             this.Controls.Add(this.dgvKetQuaHocTap);
             this.Controls.Add(this.statusStrip1);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HoTroGiaoVien.DAO.EF;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace HoTroGiaoVien.WinForm
         public Frm_QuanLyTaiKhoan_Modified()
         {
             InitializeComponent();
+        }
+
+        public bool isAdd = false;
+        public TaiKhoan taiKhoan = new TaiKhoan();
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

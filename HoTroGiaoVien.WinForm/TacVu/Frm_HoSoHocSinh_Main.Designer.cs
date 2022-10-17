@@ -49,12 +49,33 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btnProfile = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblQuantity = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.cboLop = new System.Windows.Forms.ComboBox();
             this.dgvDanhsachSinhVien = new System.Windows.Forms.DataGridView();
             this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenSinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFacebook = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenTinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DTBHocTap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDanToc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuanHuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhuongXa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTonGiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQueQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuocTich = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -145,6 +166,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.btn__NapLai.Name = "btn__NapLai";
             this.btn__NapLai.Size = new System.Drawing.Size(77, 24);
             this.btn__NapLai.Text = "Nạp lại";
+            this.btn__NapLai.Click += new System.EventHandler(this.btn__NapLai_Click);
             // 
             // btn__Them
             // 
@@ -194,6 +216,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(109, 24);
             this.toolStripButton1.Text = "Xứ lý học vụ";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -202,6 +225,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(219, 24);
             this.toolStripButton2.Text = "Thêm thông tin nội ngoại trú";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // btnGhiChuThongTin
             // 
@@ -226,7 +250,7 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(72)))), ((int)(((byte)(131)))));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
+            this.lblQuantity,
             this.lblErr});
             this.statusStrip1.Location = new System.Drawing.Point(0, 550);
             this.statusStrip1.Name = "statusStrip1";
@@ -241,13 +265,13 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(107, 21);
             this.toolStripStatusLabel1.Text = "Số lượng sinh viên:";
             // 
-            // toolStripStatusLabel2
+            // lblQuantity
             // 
-            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.White;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(19, 21);
-            this.toolStripStatusLabel2.Text = "0";
+            this.lblQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblQuantity.ForeColor = System.Drawing.Color.White;
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(19, 21);
+            this.lblQuantity.Text = "0";
             // 
             // lblErr
             // 
@@ -285,7 +309,28 @@ namespace HoTroGiaoVien.WinForm.TacVu
             this.dgvDanhsachSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhsachSinhVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSTT,
-            this.Column1});
+            this.colMaSinhVien,
+            this.colHoSinhVien,
+            this.colTenSinhVien,
+            this.colNgaySinh,
+            this.colDiaChi,
+            this.colDienThoai,
+            this.colEmail,
+            this.colFacebook,
+            this.colMaLop,
+            this.colTinhTrang,
+            this.colTenTinhTrang,
+            this.colMaChucVu,
+            this.colGioiTinh,
+            this.DTBHocTap,
+            this.colDanToc,
+            this.colTinh,
+            this.ColQuanHuyen,
+            this.colPhuongXa,
+            this.colTonGiao,
+            this.colQueQuan,
+            this.colQuocTich,
+            this.colNoiSinh});
             this.dgvDanhsachSinhVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhsachSinhVien.Location = new System.Drawing.Point(0, 82);
             this.dgvDanhsachSinhVien.Name = "dgvDanhsachSinhVien";
@@ -300,15 +345,170 @@ namespace HoTroGiaoVien.WinForm.TacVu
             // 
             // colSTT
             // 
+            this.colSTT.DataPropertyName = "STT";
             this.colSTT.HeaderText = "STT";
             this.colSTT.Name = "colSTT";
             this.colSTT.ReadOnly = true;
+            this.colSTT.Width = 50;
             // 
-            // Column1
+            // colMaSinhVien
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.colMaSinhVien.DataPropertyName = "MaSinhVien";
+            this.colMaSinhVien.HeaderText = "MSSV";
+            this.colMaSinhVien.Name = "colMaSinhVien";
+            this.colMaSinhVien.ReadOnly = true;
+            // 
+            // colHoSinhVien
+            // 
+            this.colHoSinhVien.DataPropertyName = "HoSinhVien";
+            this.colHoSinhVien.HeaderText = "Họ SV";
+            this.colHoSinhVien.Name = "colHoSinhVien";
+            this.colHoSinhVien.ReadOnly = true;
+            // 
+            // colTenSinhVien
+            // 
+            this.colTenSinhVien.DataPropertyName = "TenSinhVien";
+            this.colTenSinhVien.HeaderText = "Tên SV";
+            this.colTenSinhVien.Name = "colTenSinhVien";
+            this.colTenSinhVien.ReadOnly = true;
+            this.colTenSinhVien.Width = 80;
+            // 
+            // colNgaySinh
+            // 
+            this.colNgaySinh.DataPropertyName = "NgaySinh";
+            this.colNgaySinh.HeaderText = "Ngày sinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            this.colNgaySinh.ReadOnly = true;
+            // 
+            // colDiaChi
+            // 
+            this.colDiaChi.DataPropertyName = "DiaChi";
+            this.colDiaChi.HeaderText = "DiaChi";
+            this.colDiaChi.Name = "colDiaChi";
+            this.colDiaChi.ReadOnly = true;
+            // 
+            // colDienThoai
+            // 
+            this.colDienThoai.DataPropertyName = "DienThoai";
+            this.colDienThoai.HeaderText = "Điện thoại";
+            this.colDienThoai.Name = "colDienThoai";
+            this.colDienThoai.ReadOnly = true;
+            // 
+            // colEmail
+            // 
+            this.colEmail.DataPropertyName = "Email";
+            this.colEmail.HeaderText = "Email";
+            this.colEmail.Name = "colEmail";
+            this.colEmail.ReadOnly = true;
+            // 
+            // colFacebook
+            // 
+            this.colFacebook.DataPropertyName = "Facebook";
+            this.colFacebook.HeaderText = "Facebook";
+            this.colFacebook.Name = "colFacebook";
+            this.colFacebook.ReadOnly = true;
+            // 
+            // colMaLop
+            // 
+            this.colMaLop.DataPropertyName = "MaLop";
+            this.colMaLop.HeaderText = "Mâ lớp";
+            this.colMaLop.Name = "colMaLop";
+            this.colMaLop.ReadOnly = true;
+            // 
+            // colTinhTrang
+            // 
+            this.colTinhTrang.DataPropertyName = "TinhTrang";
+            this.colTinhTrang.HeaderText = "Tỉnh trạng";
+            this.colTinhTrang.Name = "colTinhTrang";
+            this.colTinhTrang.ReadOnly = true;
+            this.colTinhTrang.Visible = false;
+            // 
+            // colTenTinhTrang
+            // 
+            this.colTenTinhTrang.DataPropertyName = "TenTinhTrang";
+            this.colTenTinhTrang.HeaderText = "Tình trạng";
+            this.colTenTinhTrang.Name = "colTenTinhTrang";
+            this.colTenTinhTrang.ReadOnly = true;
+            // 
+            // colMaChucVu
+            // 
+            this.colMaChucVu.DataPropertyName = "MaChucVu";
+            this.colMaChucVu.HeaderText = "Mã chức vụ";
+            this.colMaChucVu.Name = "colMaChucVu";
+            this.colMaChucVu.ReadOnly = true;
+            // 
+            // colGioiTinh
+            // 
+            this.colGioiTinh.DataPropertyName = "GioiTinh";
+            this.colGioiTinh.HeaderText = "Phái";
+            this.colGioiTinh.Name = "colGioiTinh";
+            this.colGioiTinh.ReadOnly = true;
+            // 
+            // DTBHocTap
+            // 
+            this.DTBHocTap.DataPropertyName = "DTBHocTap";
+            this.DTBHocTap.HeaderText = "ĐTB";
+            this.DTBHocTap.Name = "DTBHocTap";
+            this.DTBHocTap.ReadOnly = true;
+            // 
+            // colDanToc
+            // 
+            this.colDanToc.DataPropertyName = "DanToc";
+            this.colDanToc.HeaderText = "Dân tộc";
+            this.colDanToc.Name = "colDanToc";
+            this.colDanToc.ReadOnly = true;
+            // 
+            // colTinh
+            // 
+            this.colTinh.DataPropertyName = "Tinh";
+            this.colTinh.HeaderText = "Tỉnh";
+            this.colTinh.Name = "colTinh";
+            this.colTinh.ReadOnly = true;
+            this.colTinh.Visible = false;
+            // 
+            // ColQuanHuyen
+            // 
+            this.ColQuanHuyen.DataPropertyName = "QuanHuyen";
+            this.ColQuanHuyen.HeaderText = "Quận huyện";
+            this.ColQuanHuyen.Name = "ColQuanHuyen";
+            this.ColQuanHuyen.ReadOnly = true;
+            this.ColQuanHuyen.Visible = false;
+            // 
+            // colPhuongXa
+            // 
+            this.colPhuongXa.DataPropertyName = "PhuongXa";
+            this.colPhuongXa.HeaderText = "Phường/Xã";
+            this.colPhuongXa.Name = "colPhuongXa";
+            this.colPhuongXa.ReadOnly = true;
+            this.colPhuongXa.Visible = false;
+            // 
+            // colTonGiao
+            // 
+            this.colTonGiao.DataPropertyName = "TonGiao";
+            this.colTonGiao.HeaderText = "Tôn giáo";
+            this.colTonGiao.Name = "colTonGiao";
+            this.colTonGiao.ReadOnly = true;
+            // 
+            // colQueQuan
+            // 
+            this.colQueQuan.DataPropertyName = "QueQuan";
+            this.colQueQuan.HeaderText = "Quê quán";
+            this.colQueQuan.Name = "colQueQuan";
+            this.colQueQuan.ReadOnly = true;
+            // 
+            // colQuocTich
+            // 
+            this.colQuocTich.DataPropertyName = "QuocTich";
+            this.colQuocTich.HeaderText = "Quốc tịch";
+            this.colQuocTich.Name = "colQuocTich";
+            this.colQuocTich.ReadOnly = true;
+            // 
+            // colNoiSinh
+            // 
+            this.colNoiSinh.DataPropertyName = "NoiSinh";
+            this.colNoiSinh.HeaderText = "Nơi sinh";
+            this.colNoiSinh.Name = "colNoiSinh";
+            this.colNoiSinh.ReadOnly = true;
             // 
             // Frm_HoSoHocSinh_Main
             // 
@@ -354,12 +554,33 @@ namespace HoTroGiaoVien.WinForm.TacVu
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton btnGhiChuThongTin;
         private System.Windows.Forms.DataGridView dgvDanhsachSinhVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.ToolStripButton btnBaoLuu;
         private System.Windows.Forms.ToolStripButton btnChoNghiLuon;
         private System.Windows.Forms.ToolStripButton btnProfile;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaSinhVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHoSinhVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenSinhVien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDiaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFacebook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTinhTrang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenTinhTrang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaChucVu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGioiTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DTBHocTap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDanToc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColQuanHuyen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhuongXa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTonGiao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQueQuan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuocTich;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNoiSinh;
     }
 }

@@ -35,12 +35,12 @@ namespace HoTroGiaoVien.WinForm
             this.btnThoat = new System.Windows.Forms.Button();
             this.txtPassWordNew = new HoTroGiaoVien.Commons.WaterMarkTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPrePasswordNew = new HoTroGiaoVien.Commons.WaterMarkTextBox();
             this.btnDoiMatKhau = new HoTroGiaoVien.Commons.CircleButton();
+            this.txtPrePasswordNew = new HoTroGiaoVien.Commons.WaterMarkTextBox();
             this.gbResetPassword = new System.Windows.Forms.GroupBox();
-            this.cboTaiKhoan = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnResetPassword = new HoTroGiaoVien.Commons.CircleButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboTaiKhoan = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTitle.SuspendLayout();
@@ -126,18 +126,6 @@ namespace HoTroGiaoVien.WinForm
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đổi mật khẩu";
             // 
-            // txtPrePasswordNew
-            // 
-            this.txtPrePasswordNew.BackColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
-            this.txtPrePasswordNew.Font = new System.Drawing.Font("Tahoma", 18F);
-            this.txtPrePasswordNew.Location = new System.Drawing.Point(6, 61);
-            this.txtPrePasswordNew.Name = "txtPrePasswordNew";
-            this.txtPrePasswordNew.PasswordChar = '#';
-            this.txtPrePasswordNew.Size = new System.Drawing.Size(764, 36);
-            this.txtPrePasswordNew.TabIndex = 5;
-            this.txtPrePasswordNew.WaterMarkColor = System.Drawing.Color.Gray;
-            this.txtPrePasswordNew.WaterMarkText = "Nhập lại mật khẩu mới";
-            // 
             // btnDoiMatKhau
             // 
             this.btnDoiMatKhau.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -156,6 +144,20 @@ namespace HoTroGiaoVien.WinForm
             this.btnDoiMatKhau.Text = "Đổi mật khẩu";
             this.btnDoiMatKhau.TextColor = System.Drawing.Color.White;
             this.btnDoiMatKhau.UseVisualStyleBackColor = false;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
+            // 
+            // txtPrePasswordNew
+            // 
+            this.txtPrePasswordNew.BackColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
+            this.txtPrePasswordNew.Font = new System.Drawing.Font("Tahoma", 18F);
+            this.txtPrePasswordNew.Location = new System.Drawing.Point(6, 61);
+            this.txtPrePasswordNew.Name = "txtPrePasswordNew";
+            this.txtPrePasswordNew.PasswordChar = '#';
+            this.txtPrePasswordNew.Size = new System.Drawing.Size(764, 36);
+            this.txtPrePasswordNew.TabIndex = 5;
+            this.txtPrePasswordNew.WaterMarkColor = System.Drawing.Color.Gray;
+            this.txtPrePasswordNew.WaterMarkText = "Nhập lại mật khẩu mới";
+            this.txtPrePasswordNew.Leave += new System.EventHandler(this.txtPrePasswordNew_Leave);
             // 
             // gbResetPassword
             // 
@@ -168,25 +170,6 @@ namespace HoTroGiaoVien.WinForm
             this.gbResetPassword.TabIndex = 6;
             this.gbResetPassword.TabStop = false;
             this.gbResetPassword.Text = "Cấp lại mật khẩu:";
-            // 
-            // cboTaiKhoan
-            // 
-            this.cboTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboTaiKhoan.FormattingEnabled = true;
-            this.cboTaiKhoan.Location = new System.Drawing.Point(6, 50);
-            this.cboTaiKhoan.Name = "cboTaiKhoan";
-            this.cboTaiKhoan.Size = new System.Drawing.Size(764, 37);
-            this.cboTaiKhoan.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Chọn tài khoản muốn cập lại:";
             // 
             // btnResetPassword
             // 
@@ -206,6 +189,26 @@ namespace HoTroGiaoVien.WinForm
             this.btnResetPassword.Text = "Cấp lại mật khẩu";
             this.btnResetPassword.TextColor = System.Drawing.Color.White;
             this.btnResetPassword.UseVisualStyleBackColor = false;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(254, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Chọn tài khoản muốn cập lại:";
+            // 
+            // cboTaiKhoan
+            // 
+            this.cboTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTaiKhoan.FormattingEnabled = true;
+            this.cboTaiKhoan.Location = new System.Drawing.Point(6, 50);
+            this.cboTaiKhoan.Name = "cboTaiKhoan";
+            this.cboTaiKhoan.Size = new System.Drawing.Size(764, 37);
+            this.cboTaiKhoan.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -236,6 +239,7 @@ namespace HoTroGiaoVien.WinForm
             this.Controls.Add(this.pnlTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmThayDoiMatKhau_Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmThayDoiMatKhau_Main";
             this.Load += new System.EventHandler(this.FrmThayDoiMatKhau_Main_Load);
             this.pnlTitle.ResumeLayout(false);

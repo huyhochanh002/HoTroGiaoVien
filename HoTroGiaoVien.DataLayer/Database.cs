@@ -11,14 +11,14 @@ using HoTroGiaoVien.Commons;
 
 namespace HoTroGiaoVien.DataLayer
 {
-   public class Database:IDisposable
+    public class Database : IDisposable
     {
-       //Khai báo đối tượng của ADO.NET
+        //Khai báo đối tượng của ADO.NET
         SqlConnection sqlConnection;
         //Khai báo đối tượng SqlCommand
         private SqlCommand sqlCommand;
         ReadConnectionStringFactory readConnect;//Đối tượng đọc chuỗi kết nối từ file.
-       //Khai báo đối tượng Lưu chuỗi kết nối.
+                                                //Khai báo đối tượng Lưu chuỗi kết nối.
         public SqlConnectionStringBuilder connectionStringBuilder;
 
         SqlDataAdapter dataAdapter;
@@ -33,11 +33,11 @@ namespace HoTroGiaoVien.DataLayer
                 sqlConnection = null;
             }
         }
-       /// <summary>
-       /// Hàm tạo đối tượng Database với tham số 
-       /// </summary>
-       /// <param name="path">Mảng chữa đường dẫn file chữa kết nối</param>
-       /// <param name="fileType">Kiểu file chữa kết nối</param>
+        /// <summary>
+        /// Hàm tạo đối tượng Database với tham số 
+        /// </summary>
+        /// <param name="path">Mảng chữa đường dẫn file chữa kết nối</param>
+        /// <param name="fileType">Kiểu file chữa kết nối</param>
         public Database(string[] path, FileConnectType fileType)
         {
             connectionStringBuilder = new SqlConnectionStringBuilder();//Khởi tạo đối tượng string chứa kết nối
@@ -71,96 +71,125 @@ namespace HoTroGiaoVien.DataLayer
             }
         }
 
-      
-     
-
         //Khai báo 1 phương thức để thực thi thủ tục (store Proceduce) trong Sql Và trả về kiểu SqlDataReader
-       public SqlDataReader MyExcuteReader(ref string err,string commandText,CommandType commandType,params SqlParameter[] param)
-       {
-           SqlDataReader dataReader = null;
+        public SqlDataReader MyExcuteReader(ref string err, string commandText, CommandType commandType, params SqlParameter[] param)
+        {
+            SqlDataReader dataReader = null;
 
-           try
-           {
-               //mở kết nối
-               if (sqlConnection.State == ConnectionState.Open)
-                   sqlConnection.Close();
-               sqlConnection.Open();
-               //Khởi tạo đối tượng SqlCommand
-               sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
-               if (param != null)
-               {
-                   foreach (SqlParameter item in param)
-                   {
-                       sqlCommand.Parameters.Add(item);
-                   }
-               }
-               dataReader = sqlCommand.ExecuteReader();
-           }
-           catch (Exception ex)
-           {
-               err = ex.Message;
-           }
-           
-           return dataReader;
-       }
-       
-       public bool MyExecuteNonQuery(ref string err,ref int rows, string commandText, CommandType commandType, params SqlParameter[] param)
-       {
-           bool result = false;
-           try  {
-               //mở kết nối
-               if (sqlConnection.State == ConnectionState.Open)
-                   sqlConnection.Close();
-               sqlConnection.Open();
-               //Khởi tạo đối tượng SqlCommand
-               sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
-               if (param != null){
-                   foreach (SqlParameter item in param){
-                       sqlCommand.Parameters.Add(item);
-                   }
-               }
-               rows = sqlCommand.ExecuteNonQuery();
-               result = true;
-           }
-           catch (Exception ex) {
-               err = ex.Message;
-           }
-           finally { sqlConnection.Close(); }
+            try
+            {
+                //mở kết nối
+                if (sqlConnection.State == ConnectionState.Open)
+                    sqlConnection.Close();
+                sqlConnection.Open();
+                //Khởi tạo đối tượng SqlCommand
+                sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        sqlCommand.Parameters.Add(item);
+                    }
+                }
+                dataReader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
 
-           return result;
-       }
+            return dataReader;
+        }
 
-    
-       public DataTable MyGetDataTable(ref string err,ref int rows,  string commandText, CommandType commandType, params SqlParameter[] param)
-       {
-           DataTable result=new DataTable();
-           try
-           {
-               //mở kết nối
-               if (sqlConnection.State == ConnectionState.Open)
-                   sqlConnection.Close();
-               sqlConnection.Open();
-               //Khởi tạo đối tượng SqlCommand
-               sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
-               if (param != null)
-               {
-                   foreach (SqlParameter item in param)
-                   {
-                       sqlCommand.Parameters.Add(item);
-                   }
-               }
-              //thuc thi Command
-               dataAdapter = new SqlDataAdapter(sqlCommand);
-              rows= dataAdapter.Fill(result);
-           }
-           catch (Exception ex)
-           {
-               err = ex.Message;
-           }
-           finally { sqlConnection.Close(); }
+        public bool MyExecuteNonQuery(ref string err, ref int rows, string commandText, CommandType commandType, params SqlParameter[] param)
+        {
+            bool result = false;
+            try
+            {
+                //mở kết nối
+                if (sqlConnection.State == ConnectionState.Open)
+                    sqlConnection.Close();
+                sqlConnection.Open();
+                //Khởi tạo đối tượng SqlCommand
+                sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        sqlCommand.Parameters.Add(item);
+                    }
+                }
+                rows = sqlCommand.ExecuteNonQuery();
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            finally { sqlConnection.Close(); }
 
-           return result;
-       }
+            return result;
+        }
+        public bool MyExecuteNonQuery(ref string err, string commandText, CommandType commandType, params SqlParameter[] param)
+        {
+            bool result = false;
+            try
+            {
+                //mở kết nối
+                if (sqlConnection.State == ConnectionState.Open)
+                    sqlConnection.Close();
+                sqlConnection.Open();
+                //Khởi tạo đối tượng SqlCommand
+                sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        sqlCommand.Parameters.Add(item);
+                    }
+                }
+                sqlCommand.ExecuteNonQuery();
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            finally { sqlConnection.Close(); }
+
+            return result;
+        }
+
+        public DataTable MyGetDataTable(ref string err, ref int rows, string commandText, CommandType commandType, params SqlParameter[] param)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                //mở kết nối
+                if (sqlConnection.State == ConnectionState.Open)
+                    sqlConnection.Close();
+                sqlConnection.Open();
+                //Khởi tạo đối tượng SqlCommand
+                sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        sqlCommand.Parameters.Add(item);
+                    }
+                }
+                //thuc thi Command
+                dataAdapter = new SqlDataAdapter(sqlCommand);
+                rows = dataAdapter.Fill(result);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            finally { sqlConnection.Close(); }
+
+            return result;
+        }
 
         public DataTable MyGetDataTable(ref string err, string commandText, CommandType commandType, params SqlParameter[] param)
         {
@@ -194,24 +223,27 @@ namespace HoTroGiaoVien.DataLayer
         }
 
         public object MyExecuteScalar(ref string err, string commandText, CommandType commandType, params SqlParameter[] param)
-       {
-           object result = null;
-           try{
-               if (sqlConnection.State == ConnectionState.Open)     //mở kết nối
-                   sqlConnection.Close();
-               sqlConnection.Open();
-               //Khởi tạo đối tượng SqlCommand
-               sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
-               if (param != null){
-                   foreach (SqlParameter item in param){
-                       sqlCommand.Parameters.Add(item);
-                   }
-               }
-               result = sqlCommand.ExecuteScalar();
-           }
-           catch (Exception ex){err = ex.Message;}
-           finally { sqlConnection.Close(); }
-           return result;
-       }
+        {
+            object result = null;
+            try
+            {
+                if (sqlConnection.State == ConnectionState.Open)     //mở kết nối
+                    sqlConnection.Close();
+                sqlConnection.Open();
+                //Khởi tạo đối tượng SqlCommand
+                sqlCommand = new SqlCommand() { Connection = sqlConnection, CommandText = commandText, CommandType = commandType, CommandTimeout = 3000 };
+                if (param != null)
+                {
+                    foreach (SqlParameter item in param)
+                    {
+                        sqlCommand.Parameters.Add(item);
+                    }
+                }
+                result = sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex) { err = ex.Message; }
+            finally { sqlConnection.Close(); }
+            return result;
+        }
     }
 }

@@ -58,5 +58,8 @@
       <Name>HoTroGiaoVien.Commons</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Database.cs.vsspell" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

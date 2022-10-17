@@ -192,6 +192,7 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextColor = System.Drawing.Color.White;
             this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnClose
             // 

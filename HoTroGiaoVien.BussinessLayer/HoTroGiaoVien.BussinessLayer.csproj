@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DanhMuc\BLL_DanhMucLop.cs" />
     <Compile Include="DanhMuc\BLL__DanhMucKhoa.cs" />
+    <Compile Include="HeThong\BLL_HeThong.cs" />
+    <Compile Include="HeThong\BLL_TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLL_Base.cs" />
+    <Compile Include="TacVu\BLL_GiaoVien.cs" />
     <Compile Include="TacVu\BLL_HoSoSinhVien.cs" />
     <Compile Include="TacVu\BLL__HomePage.cs" />
   </ItemGroup>
@@ -51,6 +55,10 @@
     <ProjectReference Include="..\HoTroGiaoVien.Commons\HoTroGiaoVien.Commons.csproj">
       <Project>{e5db6b7b-b558-49f9-bfa6-69659ed8a6c1}</Project>
       <Name>HoTroGiaoVien.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HoTroGiaoVien.Core\HoTroGiaoVien.DAO.csproj">
+      <Project>{8df68d80-0882-4d9c-9c0b-cd921437302a}</Project>
+      <Name>HoTroGiaoVien.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\HoTroGiaoVien.DataLayer\HoTroGiaoVien.DataLayer.csproj">
       <Project>{9e003166-1433-4bb4-be11-623ec868bef4}</Project>

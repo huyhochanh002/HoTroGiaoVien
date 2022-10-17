@@ -30,6 +30,8 @@ namespace HoTroGiaoVien.WinForm.DanhMuc
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DanhMucKhoa_Main));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,10 +44,15 @@ namespace HoTroGiaoVien.WinForm.DanhMuc
             this.btn__Sua = new System.Windows.Forms.ToolStripButton();
             this.btn__Xoa = new System.Windows.Forms.ToolStripButton();
             this.btn__Thoat = new System.Windows.Forms.ToolStripButton();
+            this.dgvDanhMucLop = new System.Windows.Forms.DataGridView();
+            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhMucLop)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTitle
@@ -178,11 +185,66 @@ namespace HoTroGiaoVien.WinForm.DanhMuc
             this.btn__Thoat.Text = "Thoát";
             this.btn__Thoat.Click += new System.EventHandler(this.btn__Thoat_Click);
             // 
+            // dgvDanhMucLop
+            // 
+            this.dgvDanhMucLop.AllowUserToAddRows = false;
+            this.dgvDanhMucLop.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(226)))), ((int)(((byte)(240)))));
+            this.dgvDanhMucLop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDanhMucLop.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhMucLop.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDanhMucLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhMucLop.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colSTT,
+            this.colMaLop,
+            this.colTenKhoa});
+            this.dgvDanhMucLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDanhMucLop.Location = new System.Drawing.Point(0, 82);
+            this.dgvDanhMucLop.Name = "dgvDanhMucLop";
+            this.dgvDanhMucLop.ReadOnly = true;
+            this.dgvDanhMucLop.RowHeadersVisible = false;
+            this.dgvDanhMucLop.RowTemplate.Height = 32;
+            this.dgvDanhMucLop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDanhMucLop.Size = new System.Drawing.Size(1030, 596);
+            this.dgvDanhMucLop.TabIndex = 9;
+            // 
+            // colSTT
+            // 
+            this.colSTT.DataPropertyName = "STT";
+            this.colSTT.HeaderText = "STT";
+            this.colSTT.Name = "colSTT";
+            this.colSTT.ReadOnly = true;
+            this.colSTT.Width = 60;
+            // 
+            // colMaLop
+            // 
+            this.colMaLop.DataPropertyName = "MaLop";
+            this.colMaLop.HeaderText = "MaKhoa";
+            this.colMaLop.Name = "colMaLop";
+            this.colMaLop.ReadOnly = true;
+            this.colMaLop.Visible = false;
+            // 
+            // colTenKhoa
+            // 
+            this.colTenKhoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTenKhoa.DataPropertyName = "TenKhoa";
+            this.colTenKhoa.HeaderText = "Tên khoa";
+            this.colTenKhoa.Name = "colTenKhoa";
+            this.colTenKhoa.ReadOnly = true;
+            // 
             // Frm_DanhMucKhoa_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 700);
+            this.Controls.Add(this.dgvDanhMucLop);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pnlTitle);
@@ -196,6 +258,7 @@ namespace HoTroGiaoVien.WinForm.DanhMuc
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhMucLop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +278,9 @@ namespace HoTroGiaoVien.WinForm.DanhMuc
         private System.Windows.Forms.ToolStripButton btn__Sua;
         private System.Windows.Forms.ToolStripButton btn__Xoa;
         private System.Windows.Forms.ToolStripButton btn__Thoat;
+        private System.Windows.Forms.DataGridView dgvDanhMucLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaLop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenKhoa;
     }
 }

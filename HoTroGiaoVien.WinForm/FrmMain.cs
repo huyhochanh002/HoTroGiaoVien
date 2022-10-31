@@ -249,6 +249,12 @@ namespace HoTroGiaoVien.WinForm
                     case "Frm_QuanLyNoiNgoaiTru_Main":
                         frm = new Frm_QuanLyNoiNgoaiTru_Main() { DongTab = new Frm_QuanLyNoiNgoaiTru_Main._deDongTab(DongTab), frm = this, TopLevel = false, Dock = DockStyle.Fill, Text = tieuDe };
                         break;
+                    case "Frm_BackUp__Restore":
+                        frm = new Frm_BackUp__Restore() { DongTab = new Frm_BackUp__Restore._deDongTab(DongTab), frm = this, TopLevel = false, Dock = DockStyle.Fill, Text = tieuDe };
+                        break;
+                    case "Frm_PhanQuyen_Main":
+                        frm = new Frm_PhanQuyen_Main() { DongTab = new Frm_PhanQuyen_Main._deDongTab(DongTab), frm = this, TopLevel = false, Dock = DockStyle.Fill, Text = tieuDe };
+                        break;
 
                 }
                 t.AttachedControl.Controls.Add(frm);

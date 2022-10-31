@@ -96,6 +96,7 @@
             this.btnThoat.Size = new System.Drawing.Size(50, 50);
             this.btnThoat.TabIndex = 0;
             this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // statusStrip1
             // 

@@ -34,6 +34,10 @@ namespace HoTroGiaoVien.WinForm
             }
         }
 
+        public FrmMain frm;
+        public delegate void _deDongTab();
+        public _deDongTab DongTab;
+
         private void btnChonfile_Click(object sender, EventArgs e)
         {
             if (ckSaoLuu.Checked)
@@ -126,6 +130,11 @@ namespace HoTroGiaoVien.WinForm
                 }
             }
 
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DongTab();
         }
     }
 }

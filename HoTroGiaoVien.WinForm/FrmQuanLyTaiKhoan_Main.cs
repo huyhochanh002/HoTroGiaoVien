@@ -37,6 +37,7 @@ namespace HoTroGiaoVien.WinForm
             dtTaiKhoan = db.GetTaiKhoanList(ref err);
             if (dtTaiKhoan != null)
             {
+
                 dgvTaiKhoanList.DataSource = dtTaiKhoan.DefaultView;
                 lblTongSoTaiKhoan.Text = string.Format("Tổng số tài khoản: {0}", dtTaiKhoan.Rows.Count);
             }
@@ -90,6 +91,11 @@ namespace HoTroGiaoVien.WinForm
             {
                 MessageBox.Show("Chưa chọn tài khoản", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvTaiKhoanList_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

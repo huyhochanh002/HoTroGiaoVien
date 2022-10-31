@@ -30,14 +30,15 @@ namespace HoTroGiaoVien.WinForm
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmQuanLyTaiKhoan_Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblTongSoTaiKhoan = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNapLai = new System.Windows.Forms.ToolStripButton();
             this.btnThem = new System.Windows.Forms.ToolStripButton();
@@ -50,7 +51,6 @@ namespace HoTroGiaoVien.WinForm
             this.colTenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNhomTaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTongSoTaiKhoan = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -129,6 +129,14 @@ namespace HoTroGiaoVien.WinForm
             this.lblErr.Size = new System.Drawing.Size(16, 20);
             this.lblErr.Text = "...";
             // 
+            // lblTongSoTaiKhoan
+            // 
+            this.lblTongSoTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblTongSoTaiKhoan.ForeColor = System.Drawing.Color.White;
+            this.lblTongSoTaiKhoan.Name = "lblTongSoTaiKhoan";
+            this.lblTongSoTaiKhoan.Size = new System.Drawing.Size(17, 20);
+            this.lblTongSoTaiKhoan.Text = "0";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -182,17 +190,17 @@ namespace HoTroGiaoVien.WinForm
             // 
             this.dgvTaiKhoanList.AllowUserToAddRows = false;
             this.dgvTaiKhoanList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(201)))), ((int)(((byte)(240)))));
-            this.dgvTaiKhoanList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(201)))), ((int)(((byte)(240)))));
+            this.dgvTaiKhoanList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTaiKhoanList.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaiKhoanList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaiKhoanList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTaiKhoanList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTaiKhoanList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSTT,
@@ -211,6 +219,7 @@ namespace HoTroGiaoVien.WinForm
             this.dgvTaiKhoanList.ShowCellErrors = false;
             this.dgvTaiKhoanList.Size = new System.Drawing.Size(800, 350);
             this.dgvTaiKhoanList.TabIndex = 5;
+            this.dgvTaiKhoanList.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTaiKhoanList_DataError);
             // 
             // colSTT
             // 
@@ -253,14 +262,6 @@ namespace HoTroGiaoVien.WinForm
             this.colNhomTaiKhoan.Name = "colNhomTaiKhoan";
             this.colNhomTaiKhoan.ReadOnly = true;
             this.colNhomTaiKhoan.Visible = false;
-            // 
-            // lblTongSoTaiKhoan
-            // 
-            this.lblTongSoTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblTongSoTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.lblTongSoTaiKhoan.Name = "lblTongSoTaiKhoan";
-            this.lblTongSoTaiKhoan.Size = new System.Drawing.Size(17, 20);
-            this.lblTongSoTaiKhoan.Text = "0";
             // 
             // FrmQuanLyTaiKhoan_Main
             // 
